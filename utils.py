@@ -9,7 +9,7 @@ def get_wikitionary_defs(word, lang="en"):
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        return format_definition(data)  # Transformer en texte
+        return format_definition(data)  
     return "Definition not found."
 
 def format_definition(definition):
@@ -22,7 +22,7 @@ def format_definition(definition):
                 meaning = d.get("text", "No definition available")
                 text.append(f"[{lang}] ({part_of_speech}): {meaning}")
         return " | ".join(text)
-    return str(definition)  # Si ce n'est pas un dict, le convertir directement en str
+    return str(definition) 
 
 
 model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
